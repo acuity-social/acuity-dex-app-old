@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@metamask/detect-provider": "^1.2.0",
+    "@oruga-ui/oruga-next": "^0.5.5",
     "@polkadot/api": "^7.13.1",
     "@polkadot/extension-dapp": "^0.42.9",
     "@polkadot/keyring": "^8.6.1",
