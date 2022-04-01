@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>
+  {{ blockNumber }}
 </template>
 
 <style lang="scss">
@@ -28,3 +29,18 @@ nav {
   }
 }
 </style>
+
+<script setup lang="ts">
+import { ref, inject, onMounted } from 'vue'
+
+const blockNumber = ref(0)
+
+
+onMounted(async () => {
+  const $acuityClient = inject('$acuityClient');
+  await $acuityClient.init();
+  $acuityClient.api.rpc.chain.subscribeNewHeads((lastHeader: any) => {
+    blockNumber.value = lastHeader.number.toString();
+  });
+})
+</script>
